@@ -1,0 +1,36 @@
+{
+  "name": "coxtex",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.4.2",
+    "date-and-time": "^0.4.0",
+    "express": "~4.5.1",
+    "method-override": "~2.0.2",
+    "mongoose": "~3.8.0",
+    "sha1": "^1.1.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "1.0.0",
+  "description": "Product review app",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/debojyoti11/cortex.git"
+  },
+  "keywords": [
+    "Product",
+    "review",
+    "expressjs",
+    "nodejs",
+    "angularjs",
+    "bootstrap"
+  ],
+  "author": "Debojyoti Paul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/debojyoti11/cortex/issues"
+  },
+  "homepage": "https://github.com/debojyoti11/cortex#readme"
+}
