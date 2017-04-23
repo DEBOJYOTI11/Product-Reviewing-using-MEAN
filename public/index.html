@@ -1,0 +1,135 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<style>
+    body{
+        background-color : azure;
+    }
+    .picture{
+        width:130px; height:130px;
+    }
+    #heading{
+        width: 100%;height:11%;
+   }
+   .le{
+       float:left;
+   }
+   .content {
+       float:left;
+       padding : 10px;
+   }
+   #product-name{
+       font-family: Verdana, Geneva, Tahoma, sans-serif;
+       font-size: 40px;
+       font-color:blue;
+
+   }
+   #type{padding-top:2px;
+   margin-top:20px;}
+
+   .insideblock{padding-right:3px;
+   }
+   .navbar{background-color: lightblue;}
+  li.a{ font-size: 20px; }
+  .navbar-brand{color:black;font-family: cursive;font-size: 30px;}
+   
+
+
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/home">Cortex</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Read instructions</a></li>
+      <li><a href="#">Follow on socila Medias</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div ng-controller="productsCtrl as product">
+        <div ng-repeat="p in productsdata"  ng-show="active" class="content">
+    
+                <div class="panel panel-default">
+                    <div class="panel-body" class="content"> 
+                        <div class = "thumbnail">
+                            <img ng-src="{{p.picture}}" class="img-responsive picture">
+                        </div>
+      
+                        <div class = "caption">
+                            <h3>{{p.name}} </h3>
+                            <p>Type : {{p.type}} <br> Date added :   {{displayTime(p.added)}}</p>
+                            <button class="btn btn-primary btn-sm" ng-click="loadProduct(p._id)">Go to prodict -></button>
+                
+                        </div>
+                  </div>
+              </div>
+        </div>
+
+<!-- end of main page -->    
+
+        <div class="row" ng-show="!active">
+
+                <div class="panel panel-default">
+                    <div class="panel-body" class="content"> 
+                        
+                        
+                    
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <img src="{{inidData.picture}}" class="picture insideblock">
+                            </div>
+                            <div class="col-lg-8">
+                                <p id="product-name">{{inidData.name}}</p>
+
+                                <h5 id="type">{{inidData.type}} |  {{inidData.added}} </h5>
+
+                                <div class="panel">
+                                    Commensts : 
+                                    <div ng-repeat="comm in inidData.comments">{{comm}}</div>
+                                </div>
+
+                                <btn class="btn btn-danger btn-sm btn-block" ng-click="back()">Go back </btn>
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-block btn-success" ng-click=""><span class=""></span>I am interested</button>
+                                <input type="text">
+                            </div>
+                        </div>      
+                     </div>  
+                </div>              
+                <br>
+                        
+                <div class="panel panel-default">
+                    <div class="panel-body"> 
+                            <form ng-submit="submitComments(inidData._id)">
+                                <input type="text" class="form-control" ng-model="comments" placeholder="Add comment">
+                                <input type="text" class="form-control" ng-model ="email" placeholder="email">
+                                <input type="text"  class="form-control" ng-model ="stars" placeholder="Stars">
+                                <input type="submit" class="btn btn-success">
+                            </form>
+                            <p class="error">{{errorPlace}}</p> 
+                    </div>
+                </div>
+</div>
+</div>
+</div>
+            
+            
+        
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="controller/app.js"></script>
+</body>
+</html>
