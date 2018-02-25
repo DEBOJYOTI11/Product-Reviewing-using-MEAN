@@ -15,12 +15,12 @@ app.use(express.static(__dirname + '/public'));
 
 //app.use(session());
 
-// var p = new productModel({
-//     name: 'Moto G 4',
-//     type:'gadgets',
-//     picture: 'http://www.siyawoman.com/wp-content/uploads/2015/09/product.png',
-// });
-// p.save();
+var p = new productModel({
+    name: 'Moto G 4',
+    type:'gadgets',
+    picture: 'http://www.siyawoman.com/wp-content/uploads/2015/09/product.png',
+});
+p.save();
 
 function isAuth(req){
     return true;
@@ -37,7 +37,7 @@ app.post('/login' , function(){
          //   res.staus(200).json(err);
          res.json(err);
         }
-        if(!doc){
+        else if(!doc){
            // res.status(401).json({msg:'Wrong username or password'});
            res.json({msg:'Wrong username or password'});
         }
@@ -51,6 +51,7 @@ app.get('/products' , function(req,res){
         res.json(doc);
     });
 });
+
 
 app.get('/products/:id',function(req,res){
     productModel.findById({_id:req.params.id }, function(err,doc){
@@ -111,7 +112,7 @@ app.get('/search/:name' , function(req,res){
 app.get('*', function(req, res){
     if(isAuth())
         res.json()
-    res.sendfile('./public/index.html');
+    res.sendFile('./public/index.html');
 });
 
 
